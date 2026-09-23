@@ -1,3 +1,66 @@
+local isPoisoned = false
+local poisonTicks = 0
+
+-- Fungsi yang dipanggil saat pemain memakan spoiled_food
+exports('EatSpoiledFood', function(data, slot)
+    local playerPed = PlayerPedId()
+
+    -- Notifikasi awal
+    lib.notify({
+        title = 'Keracunan Makanan',
+        description = 'Kamu memakan makanan basi! Perutmu terasa sangat mual...',
+        type = 'error',
+        duration = 5000
+    })
+
+    -- Mengatur durasi keracunan (contoh: berlangsung selama 5 kali pengurangan HP)
+    poisonTicks = 5 
+
+    -- Jika pemain belum dalam kondisi keracunan, jalankan loop pengurangan HP
+    if not isPoisoned then
+        isPoisoned = true
+        
+        CreateThread(function()
+            while poisonTicks > 0 do
+                -- Tunggu selama 1 menit (60.000 milidetik)
+                Wait(120000)
+
+                local currentHealth = GetEntityHealth(playerPed)
+
+                -- Cek apakah pemain masih hidup
+                if currentHealth > 100 then
+                    local damageAmount = 15 -- Jumlah HP yang berkurang setiap menit (sesuaikan nilai ini)
+                    local newHealth = currentHealth - damageAmount
+
+                    -- Kurangi health pemain
+                    SetEntityHealth(playerPed, math.max(100, newHealth))
+
+                    -- Efek visual & notifikasi mual
+                    ShakeGameplayCam('SMALL_EXPLOSION_SHAKE', 0.08)
+                    lib.notify({
+                        title = 'Sakit Perut',
+                        description = 'Kamu merasa mual dan kehilangan darah akibat racun makanan...',
+                        type = 'warning'
+                    })
+                else
+                    -- Jika pemain mati atau dalam kondisi pingsan, batalkan keracunan
+                    break
+                end
+
+                poisonTicks = poisonTicks - 1
+            end
+
+            -- Reset status keracunan setelah durasi habis
+            isPoisoned = false
+            lib.notify({
+                title = 'Kondisi Membaik',
+                description = 'Efek keracunan makanan telah hilang.',
+                type = 'inform'
+            })
+        end)
+    end
+end)
+
 Citizen.CreateThread(function()
 	-- Open Tray Stash
 	exports.ox_target:addBoxZone({

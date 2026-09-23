@@ -52,6 +52,7 @@ Open server.lua in `resource/[qbx]/qbx_management/config/`, add line in ``menus 
     ['fried_tortilla'] = {
 		label = 'Fried Tortilla',
 		weight = 50,
+		degrade = 2880,
 		stack = true,
 		close = false,
 		consume = 1,
@@ -85,6 +86,7 @@ Open server.lua in `resource/[qbx]/qbx_management/config/`, add line in ``menus 
 	['roasted_beef'] = {
 		label = 'Roasted Beef',
 		weight = 150,
+		degrade = 2880,
 		stack = true,
 		close = false,
 		consume = 1,
@@ -100,11 +102,12 @@ Open server.lua in `resource/[qbx]/qbx_management/config/`, add line in ``menus 
     ['taco_complete'] = {
 		label = 'Taco',
 		weight = 15,
+		degrade = 2880,
 		stack = true,
 		close = false,
 		consume = 1,
         client = {
-            image = 'taco.png',
+            image = 'taco_complete.png',
 			status = { hunger = 300000 },
 			anim = 'eating',
             prop = 'burger',
@@ -115,6 +118,7 @@ Open server.lua in `resource/[qbx]/qbx_management/config/`, add line in ``menus 
     ['taco_protein'] = {
 		label = 'Taco Protein',
 		weight = 15,
+		degrade = 2880,
 		stack = true,
 		close = false,
 		consume = 1,
@@ -130,6 +134,7 @@ Open server.lua in `resource/[qbx]/qbx_management/config/`, add line in ``menus 
     ['taco_vegetable'] = {
 		label = 'Taco Vegetable',
 		weight = 15,
+		degrade = 2880,
 		stack = true,
 		close = false,
 		consume = 1,
@@ -141,6 +146,23 @@ Open server.lua in `resource/[qbx]/qbx_management/config/`, add line in ``menus 
             usetime = 3000,
             notification = 'You ate a Taco Vegetable.'
         }
+	},
+
+
+	-- Spoiled Food
+	['spoiled_food'] = {
+    label = 'Makanan Basi',
+		weight = 100,
+		stack = true,
+		close = true,
+		description = 'Makanan ini sudah membusuk. Memakannya akan membuatmu sakit perut!',
+		client = {
+			image = 'spoiled_food.png',
+			anim = 'eat',
+			prop = 'burger',
+			usetime = 2500,
+			export = 'ox_spoiled_food.EatSpoiledFood' -- Mengarah ke fungsi eksport di client script
+		}
 	},
 ```
 2. Cut folder `images` to `resource/[ox]/ox_inventory/web/` and replace folder.

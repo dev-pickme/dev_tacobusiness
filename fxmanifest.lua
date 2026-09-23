@@ -10,12 +10,15 @@ shared_script{
     '@ox_lib/init.lua',
 }
 
-client_script{
-    'client.lua',
+client_scripts {
+    'client.lua'
 }
 
-server_script{
-    'server.lua',
+server_scripts {
+    'server.lua'
 }
 
-dependency 'ox_lib'
+dependencies {
+    'ox_inventory',
+    'ox_lib'
+}
