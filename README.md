@@ -182,7 +182,6 @@ Open server.lua in `resource/[qbx]/qbx_management/config/`, add line in ``menus 
 				rotation = 0,
 			},
 		},
-		blip = { id = 566, colour = 57, scale = 0.8 },
 	},
 ```
 - Get coords in game `/Admin > Developer Options > Copy Vector 3`.
