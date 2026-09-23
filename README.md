@@ -131,7 +131,7 @@ Open server.lua in `resource/[qbx]/qbx_management/config/`, add line in ``menus 
 ```lua
     -- Create Taco Complete
     {
-        name = 'cooking_taco_complete',
+        name = 'cooking_taco',
         group = { ['tacobusiness'] },
 		items = {
 			{
@@ -146,27 +146,6 @@ Open server.lua in `resource/[qbx]/qbx_management/config/`, add line in ``menus 
 				duration = 10000,
 				count = 1,
 			},
-		},
-		points = {
-			vec3(0, 0, 0)
-		},
-		zones = {
-			{
-                label = "Cooking Taco",
-                icon = 'fas fa-circle',
-				coords = vec3(0, 0, 0),
-				size = vec3(0.5, 0.5, 0.15),
-				distance = 1.5,
-				rotation = 0,
-			},
-		},
-		blip = { id = 566, colour = 57, scale = 0.8 },
-	},
-    -- Create Taco Protein
-    {
-        name = 'cooking_taco_protein',
-        group = { ['tacobusiness'] },
-		items = {
 			{
 				name = 'taco_protein',
 				ingredients = {
@@ -178,27 +157,6 @@ Open server.lua in `resource/[qbx]/qbx_management/config/`, add line in ``menus 
 				duration = 5000,
 				count = 1,
 			},
-		},
-		points = {
-			vec3(0, 0, 0)
-		},
-		zones = {
-			{
-                label = "Cooking Taco",
-                icon = 'fas fa-circle',
-				coords = vec3(0, 0, 0),
-				size = vec3(0.5, 0.5, 0.15),
-				distance = 1.5,
-				rotation = 0,
-			},
-		},
-		blip = { id = 566, colour = 57, scale = 0.8 },
-	},
-    -- Create Taco Vegetable
-    {
-        name = 'cooking_taco_vegetable',
-        group = { ['tacobusiness'] },
-		items = {
 			{
 				name = 'taco_vegetable',
 				ingredients = {
