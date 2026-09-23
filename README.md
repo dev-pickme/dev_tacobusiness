@@ -1,8 +1,9 @@
 # dev_tacobusiness [on progress]
 Taco Business for fiveM [QBox]
 
+STEP by STEP how to install Taco Business on your server
 ## 1. Add Job to list jobs
-Open jobs.lua in `resources/[qbx]/qbx_core/shared/`, add line :
+1. Open jobs.lua in `resources/[qbx]/qbx_core/shared/`, add line :
 ```lua
 	['tacobusiness'] = {
         label = 'Taco Business',
@@ -27,22 +28,24 @@ Open jobs.lua in `resources/[qbx]/qbx_core/shared/`, add line :
 Open server.lua in `resource/[qbx]/qbx_management/config/`, add line in ``menus = {HERE}``.
 ```lua
 		tacobusiness = {
-            coords = vec3(0, 0, 0),
-            size = vec3(1, 1, 1),
-            rotation = 0,
+            coords = vec3(-1249.34, -1472.78, 4.4),
+            size = vec3(0.5, 0.3, 0.7),
+            rotation = 219,
             type = 'job',
         },
 ```
 - Get coords in game `/Admin > Developer Options > Copy Vector 3`.
 - You can edit size what you want.
+2. change useTarget on client.lua in `resource/[qbx]/qbx_management/config/` from false to true.
 
 ## 3. Add to FiveM
 1. Create folder `[external]` on `resource`.
-2. Drag dev_taco to `[external]` folder.
+2. Drag dev_tacobusiness to `[external]` folder.
 
 ## 4. Manage Items
 1. Open items.lua on `resource/[ox]/ox_inventory/data` add line on `return {HERE}`
 ```lua
+    -- Taco Business Items
     ['raw_tortilla'] = {
 		label = 'Tortilla',
 		weight = 50,
@@ -66,7 +69,7 @@ Open server.lua in `resource/[qbx]/qbx_management/config/`, add line in ``menus 
         }
 	},
     ['cabbage'] = {
-		label = 'Cabagge',
+		label = 'Cabbage',
 		weight = 100,
 		stack = true,
 		close = false
@@ -147,40 +150,31 @@ Open server.lua in `resource/[qbx]/qbx_management/config/`, add line in ``menus 
             notification = 'You ate a Taco Vegetable.'
         }
 	},
-
-
-	-- Spoiled Food
-	['spoiled_food'] = {
-    label = 'Makanan Basi',
-		weight = 100,
-		stack = true,
-		close = true,
-		description = 'Makanan ini sudah membusuk. Memakannya akan membuatmu sakit perut!',
-		client = {
-			image = 'spoiled_food.png',
-			anim = 'eat',
-			prop = 'burger',
-			usetime = 2500,
-			export = 'ox_spoiled_food.EatSpoiledFood' -- Mengarah ke fungsi eksport di client script
-		}
-	},
 ```
 2. Cut folder `images` to `resource/[ox]/ox_inventory/web/` and replace folder.
 
 ## 5. Cooking
 1. Open file crafting.lua in `resource/[ox]/ox_inventory/data/` add line on return {HERE}
 ```lua
-    -- Cooking Taco
+        -- Cooking Taco
     {
         name = 'cooking_taco',
         group = { ['tacobusiness'] },
 		items = {
 			{
+				name = 'fried_tortilla',
+				ingredients = {
+					raw_tortilla = 1
+				},
+				duration = 10000,
+				count = 1,
+			},
+			{
 				name = 'taco_complete',
 				ingredients = {
 					fried_tortilla = 1,
 					roasted_beef = 1,
-                    sliced_cabagge = 1
+                    sliced_cabbage = 1
 				},
 				duration = 10000,
 				count = 1,
@@ -198,23 +192,24 @@ Open server.lua in `resource/[qbx]/qbx_management/config/`, add line in ``menus 
 				name = 'taco_vegetable',
 				ingredients = {
 					fried_tortilla = 1,
-                    sliced_cabagge = 1
+                    sliced_cabbage = 1
 				},
 				duration = 5000,
 				count = 1,
 			},
 		},
 		points = {
-			vec3(0, 0, 0)
+			vec3(-1248.96, -1473.55, 3.6)
 		},
 		zones = {
 			{
-                label = "Cooking...",
+                label = "Cooking Taco",
                 icon = 'fas fa-circle',
-				coords = vec3(0, 0, 0),
-				size = vec3(0.5, 0.5, 0.15),
+				debug = false,
+				coords = vec3(-1248.9, -1473.66, 3.28),
+				size = vec3(0.5, 0.3, 2),
 				distance = 1.5,
-				rotation = 0,
+				rotation = 308,
 			},
 		},
 	},
@@ -233,20 +228,21 @@ Open server.lua in `resource/[qbx]/qbx_management/config/`, add line in ``menus 
 			},
 		},
 		points = {
-			vec3(0, 0, 0)
+			vec3(-1249.67, -1473.42, 3.28)
 		},
 		zones = {
 			{
-                label = "Cooking...",
+                label = "Cooking Beef",
                 icon = 'fas fa-circle',
-				coords = vec3(0, 0, 0),
-				size = vec3(0.5, 0.5, 0.15),
+				debug = false,
+				coords = vec3(-1249.37, -1473.30, 3.28),
+				size = vec3(0.4, 0.2, 3),
 				distance = 1.5,
-				rotation = 0,
+				rotation = 308.63,
 			},
 		},
 	},
-	-- Slice Cabagge
+	-- Slice Cabbage
     {
         name = 'slice_cabbage',
         group = { ['tacobusiness'] },
@@ -261,16 +257,17 @@ Open server.lua in `resource/[qbx]/qbx_management/config/`, add line in ``menus 
 			},
 		},
 		points = {
-			vec3(0, 0, 0)
+			vec3(-1248.14, -1474.40, 3.3)
 		},
 		zones = {
 			{
-                label = "Slicing...",
+                label = "Slicing Cabbage",
                 icon = 'fas fa-circle',
-				coords = vec3(0, 0, 0),
-				size = vec3(0.5, 0.5, 0.15),
+				debug = false,
+				coords = vec3(-1248.14, -1474.40, 3.3),
+				size = vec3(0.4, 0.6, 1.9),
 				distance = 1.5,
-				rotation = 0,
+				rotation = 308.63,
 			},
 		},
 	},
