@@ -61,6 +61,7 @@ exports('EatSpoiledFood', function(data, slot)
     end
 end)
 
+-- Load target
 Citizen.CreateThread(function()
 	-- Open Tray Stash
 	exports.ox_target:addBoxZone({

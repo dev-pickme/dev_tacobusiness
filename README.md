@@ -178,11 +178,9 @@ Open server.lua in `resource/[qbx]/qbx_management/config/`, add line in ``menus 
 			{
 				name = 'taco_complete',
 				ingredients = {
-					tortilla = 1,
-					tortilla_protein = 1,
-                    tortilla_vegetable = 1,
-                    sauce = 1,
-                    mayonnaise = 1
+					fried_tortilla = 1,
+					roasted_beef = 1,
+                    sliced_cabagge = 1
 				},
 				duration = 10000,
 				count = 1,
@@ -190,10 +188,8 @@ Open server.lua in `resource/[qbx]/qbx_management/config/`, add line in ``menus 
 			{
 				name = 'taco_protein',
 				ingredients = {
-					tortilla = 1,
-					tortilla_protein = 1,
-                    sauce = 1,
-                    mayonnaise = 1
+					fried_tortilla = 1,
+					roasted_beef = 1
 				},
 				duration = 5000,
 				count = 1,
@@ -201,10 +197,8 @@ Open server.lua in `resource/[qbx]/qbx_management/config/`, add line in ``menus 
 			{
 				name = 'taco_vegetable',
 				ingredients = {
-					tortilla = 1,
-                    tortilla_vegetable = 1,
-                    sauce = 1,
-                    mayonnaise = 1
+					fried_tortilla = 1,
+                    sliced_cabagge = 1
 				},
 				duration = 5000,
 				count = 1,
@@ -263,7 +257,7 @@ Open server.lua in `resource/[qbx]/qbx_management/config/`, add line in ``menus 
                     cabbage = 1
 				},
 				duration = 10000,
-				count = 10,
+				count = 5,
 			},
 		},
 		points = {
