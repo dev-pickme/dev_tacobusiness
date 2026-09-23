@@ -1,7 +1,7 @@
 # dev_tacobusiness [on progress]
 Taco Business for fiveM [QBox]
 
-## 1. Add Job To Store
+## 1. Add Job to list jobs
 Open jobs.lua in `resources/[qbx]/qbx_core/shared/`, add line :
 ```lua
 	['tacobusiness'] = {
@@ -56,12 +56,12 @@ Open server.lua in `resource/[qbx]/qbx_management/config/`, add line in ``menus 
 		close = false,
 		consume = 1,
 		client = {
-            image = 'taco.png',
+            image = 'fried_tortilla.png',
 			status = { hunger = 50000 },
 			anim = 'eating',
             prop = 'burger',
             usetime = 3000,
-            notification = 'You ate a Taco.'
+            notification = 'You ate a Fried Tortilla.'
         }
 	},
     ['cabbage'] = {
@@ -145,7 +145,7 @@ Open server.lua in `resource/[qbx]/qbx_management/config/`, add line in ``menus 
 ```
 2. Cut folder `images` to `resource/[ox]/ox_inventory/web/` and replace folder.
 
-## 5. Cooking Tacos
+## 5. Cooking
 1. Open file crafting.lua in `resource/[ox]/ox_inventory/data/` add line on return {HERE}
 ```lua
     -- Cooking Taco
