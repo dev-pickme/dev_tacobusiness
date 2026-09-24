@@ -103,7 +103,7 @@ Open server.lua in `resource/[qbx]/qbx_management/config/`, add line in ``menus 
         }
 	},
     ['taco_complete'] = {
-		label = 'Taco',
+		label = 'Taco Complete',
 		weight = 15,
 		degrade = 2880,
 		stack = true,

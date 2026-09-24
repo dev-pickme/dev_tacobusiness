@@ -2,13 +2,14 @@ lib = lib or exports.ox_lib
 
 -- Load target
 Citizen.CreateThread(function()
-	-- Open Tray Stash
+	-- Open Tray
 	exports.ox_target:addBoxZone({
 		coords = vec3(-1248.2, -1473.9, 4.3),
 		size = vec3(0.5, 0.35, 0.3),
 		rotation = 127,
 		debug = false,
-		options = {
+		options = 
+		{
 			{
 				name = 'open_taco_tray_1',
 				icon = 'fas fa-inbox',
@@ -25,17 +26,18 @@ Citizen.CreateThread(function()
 		}
     })
 
-    -- Open Storage Stash 1
+    -- Open Storage 1
 	exports.ox_target:addBoxZone({
 		coords = vec3(-1248.7, -1473.36, 4.4),
 		size = vec3(0.6, 0.3, 0.5),
 		rotation = 127,
 		debug = false,
-		options = {
+		options = 
+		{
 			{
 				name = 'open_taco_storage_1',
 				icon = 'fas fa-inbox',
-				label = 'Storage Taco 1',
+				label = 'Storage 1',
 				onSelect = function(data)
 					lib.callback('tacobusiness:server:openTacoStash', false, function(stashId)
 						exports.ox_inventory:openInventory('stash',{
@@ -48,7 +50,7 @@ Citizen.CreateThread(function()
 		}
     })
 
-    -- Open Storage Stash 2
+    -- Open Storage 2
 	exports.ox_target:addBoxZone({
 		coords = vec3(0, 0, 0),
 		size = vec3(1, 1, 1),
@@ -58,7 +60,7 @@ Citizen.CreateThread(function()
 			{
 				name = 'open_taco_storage_2',
 				icon = 'fas fa-inbox',
-				label = 'Storage Taco 2',
+				label = 'Storage 2',
 				onSelect = function(data)
 					lib.callback('tacobusiness:server:openTacoTray', false, function(stashId)
 						exports.ox_inventory:openInventory('stash',{
