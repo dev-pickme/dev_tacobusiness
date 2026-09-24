@@ -7,7 +7,7 @@ lib.callback.register('tacobusiness:server:openTacoTray', function(source)
 		stashid,
 		"Taco Tray",
 		5,
-		1000,
+		10000,
 		false,
 		nil
 	)

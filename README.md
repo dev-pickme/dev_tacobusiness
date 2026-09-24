@@ -1,4 +1,4 @@
-# dev_tacobusiness [on progress]
+# dev_tacobusiness [FREE Develop]
 Taco Business for fiveM [QBox]
 
 STEP by STEP how to install Taco Business on your server
@@ -55,7 +55,6 @@ Open server.lua in `resource/[qbx]/qbx_management/config/`, add line in ``menus 
     ['fried_tortilla'] = {
 		label = 'Fried Tortilla',
 		weight = 50,
-		degrade = 2880,
 		stack = true,
 		close = false,
 		consume = 1,
@@ -80,26 +79,25 @@ Open server.lua in `resource/[qbx]/qbx_management/config/`, add line in ``menus 
 		stack = true,
 		close = false
 	},
-	['raw_beef'] = {
-		label = 'Raw Beef',
+	['raw_meat'] = {
+		label = 'Raw Meat',
 		weight = 150,
 		stack = true,
 		close = false
 	},
-	['roasted_beef'] = {
-		label = 'Roasted Beef',
+	['cooked_meat'] = {
+		label = 'Cooked Meat',
 		weight = 150,
-		degrade = 2880,
 		stack = true,
 		close = false,
 		consume = 1,
 		client = {
-            image = 'roasted_beef.png',
+            image = 'cooked_meat.png',
 			status = { hunger = 150000 },
 			anim = 'eating',
             prop = 'burger',
             usetime = 3000,
-            notification = 'You ate a Roasted Beef.'
+            notification = 'You ate a Cooked Meat.'
         }
 	},
     ['taco_complete'] = {
@@ -111,7 +109,7 @@ Open server.lua in `resource/[qbx]/qbx_management/config/`, add line in ``menus 
 		consume = 1,
         client = {
             image = 'taco_complete.png',
-			status = { hunger = 300000 },
+			status = { hunger = 350000 },
 			anim = 'eating',
             prop = 'burger',
             usetime = 3000,
@@ -158,6 +156,11 @@ Open server.lua in `resource/[qbx]/qbx_management/config/`, add line in ``menus 
 ```lua
         -- Cooking Taco
     {
+		local Player = exports['qbx_core']:GetPlayer(source)
+		if not(Player and Player.PlayerData.job.name == 'tacobusiness') then
+			return nil
+		end
+
         name = 'cooking_taco',
         group = { ['tacobusiness'] },
 		items = {
@@ -173,7 +176,7 @@ Open server.lua in `resource/[qbx]/qbx_management/config/`, add line in ``menus 
 				name = 'taco_complete',
 				ingredients = {
 					fried_tortilla = 1,
-					roasted_beef = 1,
+					cooked_meat = 1,
                     sliced_cabbage = 1
 				},
 				duration = 10000,
@@ -183,7 +186,7 @@ Open server.lua in `resource/[qbx]/qbx_management/config/`, add line in ``menus 
 				name = 'taco_protein',
 				ingredients = {
 					fried_tortilla = 1,
-					roasted_beef = 1
+					cooked_meat = 1
 				},
 				duration = 5000,
 				count = 1,
@@ -213,15 +216,20 @@ Open server.lua in `resource/[qbx]/qbx_management/config/`, add line in ``menus 
 			},
 		},
 	},
-	-- Cooking Beef
+	-- Cooking Meat
     {
-        name = 'cooking_beef',
+		local Player = exports['qbx_core']:GetPlayer(source)
+		if not(Player and Player.PlayerData.job.name == 'tacobusiness') then
+			return nil
+		end
+
+        name = 'cooking_meat',
         group = { ['tacobusiness'] },
 		items = {
 			{
-				name = 'roasted_beef',
+				name = 'cooked_meat',
 				ingredients = {
-                    raw_beef = 1
+                    raw_meat = 1
 				},
 				duration = 10000,
 				count = 1,
@@ -232,7 +240,7 @@ Open server.lua in `resource/[qbx]/qbx_management/config/`, add line in ``menus 
 		},
 		zones = {
 			{
-                label = "Cooking Beef",
+                label = "Cooking Meat",
                 icon = 'fas fa-circle',
 				debug = false,
 				coords = vec3(-1249.37, -1473.30, 3.28),
@@ -244,6 +252,11 @@ Open server.lua in `resource/[qbx]/qbx_management/config/`, add line in ``menus 
 	},
 	-- Slice Cabbage
     {
+		local Player = exports['qbx_core']:GetPlayer(source)
+		if not(Player and Player.PlayerData.job.name == 'tacobusiness') then
+			return nil
+		end
+
         name = 'slice_cabbage',
         group = { ['tacobusiness'] },
 		items = {
